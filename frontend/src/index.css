@@ -1,0 +1,38 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/forms";
+
+@theme {
+  --font-sans: "Inter Variable", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --color-accent: var(--color-blue-700);
+  --color-accent-hover: var(--color-blue-800);
+}
+
+@utility btn {
+  @apply inline-flex items-center justify-center gap-2 rounded-md px-4 py-2 text-sm font-medium
+    transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent
+    disabled:cursor-not-allowed disabled:opacity-50;
+}
+
+@layer base {
+  html {
+    @apply bg-slate-50 text-slate-900 antialiased;
+    font-feature-settings: "cv11", "ss01", "tnum";
+    text-rendering: optimizeLegibility;
+  }
+  h1 { @apply text-xl font-semibold tracking-tight sm:text-2xl; }
+  h2 { @apply text-sm font-semibold uppercase tracking-wide text-slate-500; }
+  a { @apply text-accent hover:text-accent-hover; }
+}
+
+@layer components {
+  .card { @apply rounded-lg border border-slate-200 bg-white; }
+  .input {
+    @apply block w-full rounded-md border-slate-300 bg-white text-sm shadow-xs
+      focus:border-accent focus:ring-accent disabled:bg-slate-100 disabled:text-slate-500;
+  }
+  .input-error { @apply border-red-500 focus:border-red-600 focus:ring-red-600; }
+  .label { @apply mb-1 block text-sm font-medium text-slate-700; }
+  .btn-primary { @apply btn bg-accent text-white hover:bg-accent-hover; }
+  .btn-secondary { @apply btn border border-slate-300 bg-white text-slate-700 hover:bg-slate-50; }
+  .num { font-variant-numeric: tabular-nums; }
+}
